@@ -66,8 +66,8 @@ module ScoutApm
             end
           end
 
-          alias_method :process_work_without_scout, :work
-          alias_method :work, :process_work_with_scout
+          alias_method :process_work_without_scout, :do_work
+          alias_method :do_work, :process_work_with_scout
         end
 
         # msg = {
