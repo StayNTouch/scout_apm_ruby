@@ -35,15 +35,7 @@ module ScoutApm
 
             queue = delivery_info[:routing_key] || UNKNOWN_QUEUE_PLACEHOLDER
 
-            job_class = begin
-              if self.class == ActiveJob::QueueAdapters::SneakersAdapter::JobWrapper
-                msg["job_class"] || UNKNOWN_CLASS_PLACEHOLDER
-              else
-                self.class.name
-              end
-            rescue => e
-              UNKNOWN_CLASS_PLACEHOLDER
-            end
+            job_class = self.class.name
 
             req = ScoutApm::RequestManager.lookup
 
