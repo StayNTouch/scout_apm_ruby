@@ -36,7 +36,7 @@ module ScoutApm
               path = path.path if path.respond_to?(:path)
 
               max_length = ScoutApm::Agent.instance.context.config.value('instrument_http_url_length')
-              (@address + path.split('?').first)[0..(max_length - 1)]
+              (@address.to_s + path.split('?').first)[0..(max_length - 1)]
             end
 
             alias request_without_scout_instruments request
